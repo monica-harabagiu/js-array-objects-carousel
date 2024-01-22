@@ -30,6 +30,10 @@ const arrayMovies = [
 const thumbnailsHtml = document.getElementById("thumbnails")
 const focusCardHtml = document.getElementById("focus-card")
 const arrowDownHtml = document.querySelector('.fa-circle-arrow-down')
+const arrowUpHtml = document.querySelector('.fa-circle-arrow-up')
+
+let currentMovie = 0
+
 
 for (let i = 0; i < arrayMovies.length; i++) {
 
@@ -73,11 +77,36 @@ for (let i = 0; i < arrayMovies.length; i++) {
 
 
 
+arrowDownHtml.addEventListener('click', function() {
+    currentMovie = (currentMovie + 1) % arrayMovies.length;
+    updateCarousel();
+})
+
+arrowUpHtml.addEventListener('click', function() {
+    currentMovie = (currentMovie - 1 + arrayMovies.length) % arrayMovies.length;
+    updateCarousel();
+})
+
+function updateCarousel() {
+    let titles = focusCardHtml.querySelectorAll('h3');
+    let descriptions = focusCardHtml.querySelectorAll('p');
+    let thumbnails = thumbnailsHtml.querySelectorAll('#focus-card, .thumbnail');
+
+    // Hide all titles, descriptions, and thumbnails
+    titles.forEach(title => title.classList.add('hidden'));
+    descriptions.forEach(description => description.classList.add('hidden'));
+    thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
+
+    // Show the current title, description, and thumbnail
+    titles[currentMovie].classList.remove('hidden');
+    descriptions[currentMovie].classList.remove('hidden');
+    thumbnails[currentMovie].classList.add('active');
+
+    // Update the main photo
+    focusCardHtml.style.backgroundImage = `url(./assets/img/${arrayMovies[currentMovie].immagine})`;
+}
 
 
 
-// arrowDownHtml.addEventListener("click", function(){
 
-//     titleCard.classList.toggle("hidden")
-    
-// })
+
