@@ -36,13 +36,13 @@ main {
 }
 
 #focus-card {
-    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.73)), url(../img/brooklyn99.jpg);
+    /* background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.73)), url(../img/brooklyn99.jpg); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     justify-content: flex-end;
     text-align: end;
-    width: calc(100%  - 200px);
+    width: calc(100% - 200px);
     padding: 40px;
     padding-left: 100px;
 }
@@ -84,7 +84,7 @@ main {
     cursor: pointer;
 }
 
-.tbn-01 {
+/* .tbn-01 {
     background-image: url(../img/brooklyn99.jpg);
 }
 
@@ -102,9 +102,17 @@ main {
 
 .tbn-05 {
     background-image: url(../img/vikings.jpg);
+} */
+
+.hidden {
+    display: none;
 }
 
-.selected {
+.active {
+    display: block;
+}
+
+.active {
     border: 2px solid white;
     opacity: .7;
 }
